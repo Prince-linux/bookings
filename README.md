@@ -1,2 +1,1 @@
-# booking
 # bookings

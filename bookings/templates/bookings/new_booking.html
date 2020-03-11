@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Booking</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</head>
+<body>
+{% if messages %}
+        {% for message in messages %}
+              <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+              </div>
+        {% endfor %}
+    {% endif %}
+
+<h2>Create new Booking</h2>
+
+<!-- <form action="/new/" method="Post" enctype="multipart/form-data">-->
+<form action="/new/" method="Post">
+
+                    {% csrf_token %}
+<!--                {{ form.errors }}-->
+                <div class="form-row">
+                    <div class="form-group col-2">
+                        <label class="col-form-label" for="{{form.name_of_booking.id_for_label}}">{{form.name_of_booking.label}}</label>
+                        {{ form.name_of_booking.errors }}
+
+                    </div>
+                    <div class="form-group col-8">
+                            {{form.name_of_booking}}
+    <!--                    <input id="{{form.name_of_booking.id_for_label}}" class="form-control" name="{{form.name_of_booking.name}}"  maxlength="20"  type="{{form.name_of_booking.field.widget.input_type}}">-->
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-2">
+                        <label class="col-form-label" for="{{form.price_of_booking.id_for_label}}">{{form.price_of_booking.label}}</label>
+                        {{ form.price_of_booking.errors }}
+
+                    </div>
+                    <div class="form-group col-8">
+                            {{form.price_of_booking}}
+    <!--                    <input id="{{form.price_of_booking.id_for_label}}" class="form-control" name="{{form.price_of_booking.name}}"  maxlength="20"  type="{{form.price_of_booking.field.widget.input_type}}">-->
+                    </div>
+                </div>
+
+
+                <div class="form-row">
+                    <div class="form-group col-2">
+
+
+                             <label class="col-form-label" for="{{form.available.id_for_label}}">{{form.available.label}}</label>
+                    </div>
+
+                        <div class="form-check">
+                            <div class="col-8">
+                                {{form.available}}
+    <!--                            <input class="form-check-input" type="checkbox" id="{{form.available.id_for_label}}">-->
+                            </div>
+                        </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-2">
+
+                        <input type="submit" class="btn btn-primary" value="Submit">
+                    </div>
+                </div>
+            </form>
+
+</body>
+</html>
